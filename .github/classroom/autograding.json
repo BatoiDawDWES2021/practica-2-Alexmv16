@@ -1,0 +1,34 @@
+{
+  "tests": [
+    {
+      "name": "testMitjana",
+      "setup": "",
+      "run": "./vendor/bin/phpunit ./tests/Test.php --filter testMitjana",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "testTriaParaules",
+      "setup": "",
+      "run": "./vendor/bin/phpunit ./tests/Test.php --filter testTriaParaules",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 2
+    },
+    {
+      "name": "testLogin",
+      "setup": "",
+      "run": "./vendor/bin/phpunit ./tests/Test.php --filter testLogin",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    }
+  ]
+}

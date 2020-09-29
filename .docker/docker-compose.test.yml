@@ -1,0 +1,36 @@
+version: '3.7'
+# Services
+services:
+  # Nginx Service
+  nginx:
+    image: nginx:1.19-alpine
+    ports:
+      - 80:80
+    volumes:
+      - ../:/var/www/sites:ro
+      - ./.basicPHPDocker/nginx/conf.d:/etc/nginx/conf.d
+    depends_on:
+      - php
+  # PHP Service
+  php:
+    build:
+      context: ./php
+      dockerfile: Dockerfile
+    working_dir: /var/www/sites
+    volumes:
+      - ../:/var/www/sites
+    depends_on:
+      - mysql
+    command: vendor/bin/phpunit tests
+  # MySQL Service
+  mysql:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./.basicPHPDocker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf:ro
+      - mysqldata:/var/lib/mysql
+# Volumes
+volumes:
+  mysqldata:
+
