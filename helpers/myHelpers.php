@@ -20,7 +20,9 @@ function loadWhoops()
  */
 function mitjana(Array $numeros):Float
 {
-
+    $suma=array_sum($numeros);
+    $media=$suma/count($numeros);
+       return $media;
 }
 
 /**
@@ -31,7 +33,8 @@ function mitjana(Array $numeros):Float
  */
 function triaParaules(Array $diccionari,$quantitat):Array
 {
-
+    $arrayAleatorio=array_rand($diccionari,$quantitat);
+    return $arrayAleatorio;
 }
 
 /**
@@ -44,5 +47,15 @@ function triaParaules(Array $diccionari,$quantitat):Array
  */
 function login(Array $usuarisValids,$user,$password):bool
 {
-
+    foreach ($usuarisValids as $nom => $pass) { 
+        if($user === $nom and $password === $pass){
+		
+		return true;
+	
+  }else{
+      return false;
+  }
+    
+   
+}
 }

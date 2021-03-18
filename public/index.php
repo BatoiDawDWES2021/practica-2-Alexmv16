@@ -1,5 +1,11 @@
 <?php
+  session_start();
     require_once dirname(__FILE__) . "/../templates/cabecera.php";
+    require_once('../config/diccionari.php');
+    include_once('juego1.php');
+    include_once('juego2.php');
+
+    
 ?>
 <main role="main">
    <div class="album py-5 bg-light">
@@ -11,7 +17,7 @@
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
             <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" ><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/>
-                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Resultat</text>
+                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Resultat <?PHP echo $media ?></text>
             </svg>
             <div class="card-body">
                 <p class="card-text"><strong>Calcul mitjana</strong>.Per acabar introdueixca numero negatiu</p>
@@ -22,7 +28,7 @@
                   </div>
                     <div class="btn-group">
                       <button type="submit" name="submitMitjana" class="btn btn-sm btn-outline-secondary">Submit</button>
-                        <button type="submit" name="resetMitjana" class="btn btn-sm btn-outline-secondary">Reset</button>
+                        <button type="submit" name="resetMedia" class="btn btn-sm btn-outline-secondary">Reset</button>
                     </div>
                 </form>
                 <small class="text-muted">9 mins</small>
@@ -37,7 +43,7 @@
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
             <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" ><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/>
-                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Has encertat </text>
+                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Has encertat <?PHP echo 'Aciertos: '.$cont ?></text>
             </svg>
             <div class="card-body">
               <p class="card-text">Traducció. Com es diuen en anglès les següents paraules.</p>
@@ -45,7 +51,8 @@
               <div class="d-flex justify-content-between align-items-center">
                   <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST" >
                   <div class="form-group">
-                      <label for="question">Paraula en valencià 1</label>
+                  <label for="question">Paraula en valencià : <?= $aleatori[$i] ?>
+                      </label>
                       <input type="text" class="form-control" id="question" name="question">
                   </div>
                 <div class="btn-group">
@@ -65,7 +72,7 @@
           <div class="col-md-4">
               <div class="card mb-4 shadow-sm">
                   <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" ><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/>
-                      <text x="50%" y="50%" fill="#eceeef" dy=".3em">La paraula _____ ha estat afegida</text>
+                      <text x="50%" y="50%" fill="#eceeef" dy=".3em">La paraula <?= $valencia ?> ha estat afegida</text>
                   </svg>
                   <div class="card-body">
                       <p class="card-text"><strong>Afegir paraules</strong> al diccionari</p>
